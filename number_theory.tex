@@ -1,9 +1,13 @@
 %!tex program = lualatex
 \documentclass{ctexbook}
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{
+linkcolor = blue!80!green}
 \usepackage{amsmath, amssymb, amsthm, mathtools}
 \usepackage[a4paper, margin=2cm]{geometry}
 \usepackage{indentfirst}
 \usepackage{csquotes}
+\usepackage{ulem}
 \usepackage{enumitem}
 \usepackage{romannum}
 
@@ -14,9 +18,25 @@
 \WarningFilter{latexfont}{Font shape}
 \WarningFilter{latexfont}{Some font}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mydefinitionstyle}
+  {} % 头部空间
+  {} % 底部空间
+  {\normalfont} % 正文字体
+  {} % 缩进
+  {\bfseries\sffamily} % 标题字体
+  {.} % 标题标点
+  { } % 标题与正文之间的间距
+  {} % 标题格式
+
+\theoremstyle{mydefinitionstyle}
+
 \newtheorem{definition}{定义}
 \newtheorem{theorem}{定理}
 \newtheorem{example}{例}
+\newtheorem*{solution}{解}
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\thefootnote}{\textcircled{\arabic{footnote}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{tikz}
 \newcommand{\eqrefl}[1]{
@@ -26,6 +46,8 @@
 }
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{booktabs}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
