@@ -1,0 +1,41 @@
+%!tex program = lualatex
+\documentclass{ctexbook}
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{indentfirst}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{romannum}
+
+\hfuzz=2pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% filter warnings
+\usepackage{silence}
+\WarningFilter{latexfont}{Font shape}
+\WarningFilter{latexfont}{Some font}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{example}{例}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{tikz}
+\newcommand{\eqrefl}[1]{
+\foreach \eq in {#1}
+{
+  \eqref{\eq}，
+}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\include{divisibility}
+\include{indeterminate_equation1}
+\include{congruence}
+\include{congruence_equation}
+\include{exponent_and_primitive_root}
+\include{indeterminate_equation2}
+\include{continued_fraction}
+\include{prime_distribution}
+\include{arithmetic_function}
+\end{document}

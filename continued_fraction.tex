@@ -1,0 +1,452 @@
+\chapter{连分数}
+\section{什么是连分数}\label{subsec:连分数介绍}
+连分数是一个很有用的工具。我们先来举几个例子，说明什么叫连分数以及它的用处.
+\begin{example}\label{ex:开根号}
+	如果你手边没有平方根表，也没有计算器，那么能用 什么简单方法来求 \( \sqrt{11} \)的近似值？当然可以用通常的求平方根的
+	方法，但下面的办法看来更方便。
+	\begin{align}
+		             & 3 < \sqrt{11} <4,                                                 \\
+		\sqrt{11}  = & 3 +（\sqrt{11}-3）                                   \label{cf2}  \\
+		=            & 3 + \frac{1}{(\sqrt{11}+3)/2} \nonumber                           \\
+		=            & 3 + \cfrac{1}{3+(\sqrt{11}-3)/2}                      \label{cf3} \\
+		=            & 3 + \cfrac{1}{3 + \cfrac{1}{\sqrt{11} + 3}} \nonumber             \\
+		=            & 3 + \cfrac{1}{3 + \cfrac{1}{6 + (\sqrt{11} -3)}}.\label{cf4}
+	\end{align}
+
+	重复这一过程就可得到
+	\begin{align}
+		\sqrt{11} & =
+		3 + \cfrac{1}{3 +
+			\cfrac{1}{6 +
+				\cfrac{1}{3 +
+					(\sqrt{11} -3)/2
+		}}}          \label{cf5}  \\
+		          & =
+		3 + \cfrac{1}{3 +
+			\cfrac{1}{6 +
+				\cfrac{1}{3 +
+					\cfrac{1}{6 +
+						(\sqrt{11} -3)
+		}}}}          \label{cf6} \\
+		          & =
+		3 + \cfrac{1}{3 +
+			\cfrac{1}{6 +
+				\cfrac{1}{3 +
+					\cfrac{1}{6 +
+						\cfrac{1}{3 +
+							(\sqrt{11} -3) / 2
+		}}}}}        \label{cf7}  \\
+		          & =
+		3 + \cfrac{1}{3 +
+			\cfrac{1}{6 +
+				\cfrac{1}{3 +
+					\cfrac{1}{6 +
+						\cfrac{1}{3 +
+							\cfrac{1}{6 +
+								(\sqrt{11} -3)
+		}}}}}}        \label{cf8} \\
+		= \dots\dots. \nonumber
+	\end{align}
+	马上就会想到分别把式\eqrefl{cf2,cf3,cf4,cf5,cf6,cf7,cf8}中的无理数 \( (\sqrt{11} - 3) \) 或 \( (\sqrt{11} - 3)/2
+	\)去掉后所得到的\enquote{分数}值来作为 \( \sqrt{11} \)的\enquote{近似值}。容易算出，这些\enquote{近似值}依次为：
+	\begin{equation}\label{eq:根号11}
+		\sqrt{11} \approx 3, \frac{10}{3}, \frac{63}{19}, \frac{199}{60}, \frac{1257}{379}, \frac{3970}{1197},
+		\frac{25077}{7561}.
+	\end{equation}
+	用小数表示，这些\enquote{近似值}依次为(取八位小数)：
+	\begin{equation}
+		\sqrt{11} \approx 3,\: 3.33333333,\:3.31578947,\:3.316666666,\: 3.316622691,\: 3.31662489,\: 3.31662478.
+	\end{equation}
+	这些的确是很精确的近似值，因为实际上
+	\begin{equation}
+		\sqrt{11} = 3.31662479\dots.
+	\end{equation}
+	若取 \( 10 / 3 \)作近似值，就精确到 \( 2 / 10^2 \)；取 \( 63 / 19 \)就精确到 \( 9 / 10^4 \)；取 \( 199 / 60 \)就精确到
+	\( 42 / 10^6 \)；取 \( 1257 / 379 \)就精确到 \( 22 / 10^7 \)；取 \( 3970 / 1197 \)就精确到 \( 1 / 10^7 \)；取 \( 25077 /
+	7561\)就精确到 \( 1/10^8 \)。这些数据表明，这些近似值依次一个比一个更精确。此外，容易看出
+	\begin{equation}
+		3 < \frac{63}{19} < \frac{1257}{379} < \frac{25077}{7561} < \sqrt{11} < \frac{3970}{1197} < \frac{199}{60} <
+		\frac{10}{3}.
+	\end{equation}
+	这个例子表明，它提出了一方法来构造一些特殊形式的 \enquote{分数}，作为无理数的近似值。因而也就提出了研究这种形式
+	\enquote{分数}的性质的新课题，以及从理论上研究无理数的这种形式的有理数逼近。另外，以上的过程不断的继续下去，就可以得到
+	一个无穷尽的\enquote{分数}表达式：
+	\begin{equation}
+		3 + \cfrac{1}{3 +
+			\cfrac{1}{6 +
+				\cfrac{1}{3 +
+					\cfrac{1}{6 +
+						\cfrac{1}{3 +
+							\cfrac{1}{6 +
+								\cfrac{1}{3 +
+									\cfrac{1}{6 +
+										\genfrac{}{}{0pt}{}{\phantom{1}}{\ddots}
+									}}}}}}}}
+	\end{equation}
+	这种表达式的确切含意是什么呢？能否定义它的\enquote{值}？如果能定义它的\enquote{值}，那么这\enquote{值}和 \( \sqrt{11}
+	\)有什么关系？这就又提出了进一步的硏究课题。
+\end{example}
+
+\begin{example}\label{ex:化简分数}
+	一个分母、分子很大的分数用起来是很不方便的，如 \( 103993/33102 \)。 我们想找一个分母、分子较小的分数来近似它，
+	希望分母不要太大，但误差很小。利用例\ref{ex:开根号}的方法可得
+	\begin{align*}
+		\frac{103993}{33102} & = 3 + \frac{4687}{33102} = 3 + \cfrac{1}{7 + \cfrac{293}{4687}}     \\
+		                     & = 3 + \cfrac{1}{7  + \cfrac{1}{15 + \cfrac{292}{293}}}              \\
+		                     & = 3 + \cfrac{1}{7  + \cfrac{1}{15 + \cfrac{1}{1 + \cfrac{1}{292}}}}
+	\end{align*}
+	类似于例\ref{ex:开根号}，我们扔掉这些\enquote{分数}中小于1的数 \(\displaystyle \frac{4687}{33102},\,\frac{293}{4687},\,
+	\frac{292}{293},\, \frac{1}{292}, \)用依次得到的
+	\begin{equation*}
+		3,\ 3 + \frac{1}{7} = \frac{22}{7},\ 3+ \cfrac{1}{7 + {\cfrac{1}{15}}} = \frac{333}{106},\ 3 + \cfrac{1}{7 +
+			\cfrac{1}{15 + \cfrac{1}{1}}} = \frac{355}{113}
+	\end{equation*}
+	来近似 \( 103993/33102 = 3.141592653\dots \)。由
+	\begin{equation*}
+		\frac{22}{7} = 3.14285714\dots,\ \frac{333}{106} = 3.14150943\dots,\ \frac{355}{113} = 3.14159292\dots,
+	\end{equation*}
+	推出它们的精确度依次为 \(  14/10^2,\, 13/10^4,\, 8/10^5,\, 3/10^7 \)。与它们的分母相比（依次为： \( 1,7,106,113
+	\)）精确度是很高的。事实上，这些都是圆周率\pi 的近似值， \( 22/7 \)是所谓\enquote{疏率}， \( 355/113 \)是\enquote{密率}。
+
+	这个例子表明，即使是一个分数把它表成这种形式的\enquote{分数} 也是有好处的。
+\end{example}
+
+\begin{example}
+	至今，除了试算具体数值，我们还没有方法来求解不定方程
+	\begin{equation}
+		x^2 - 11y^2 = 1, x > 0, y > 0. \label{eq:不定方程}
+	\end{equation}
+	这个不定方程可化为
+	\begin{align}
+		x - \sqrt{11}y          & = \frac{1}{x + \sqrt{11y}}, x > 0, y > 0. \nonumber \\
+		\frac{x}{y} - \sqrt{11} & = \frac{1}{y(x + \sqrt{11y})}, x > 0, y > 0.
+	\end{align}
+	这表明不定方程\eqref{eq:不定方程}的解 \( x, y \)所给出的分数 \( x/y \)是 \( \sqrt{11}
+	\)一个很精确的近似值。因而，我们可以试想从式\eqref{eq:根号11}所得的那些 \( \sqrt{11}
+	\)的近似分数中去寻找\eqref{eq:不定方程}的解。通过验算知，由分数 \( 199/60, 3970/1197 \)得出的
+	\begin{equation}
+		x=199,\quad y=60; \quad x=3970, \quad y=1197
+	\end{equation}
+	是\eqref{eq:不定方程}的解，其它几个都不是。当然，从式\eqref{cf8}继续算下去得到的近似分数中还能找出解来。
+
+	这个例子启示我们，通过研究这类新形式的\enquote{分数}，有可能找到求解形如\eqref{eq:不定方程}的一类不定方程的方法。
+\end{example}
+\begin{definition}
+	设 \( x_0, x_1, x_2, \dots \) 是一个无穷实数列， \( x_j > 0, j \ge 1 \)。 对缩写的 \( n \ge 0 \)， 我们把表示式
+	\begin{equation}\label{eq:有限连分数定义}
+		x_0 +
+		\cfrac{1}{x_1 +
+			\cfrac{1}{x_2 +
+				\cfrac{1}{x_3 +
+					\cfrac{1}{\ddots +
+						\cfrac{1}{x_n}
+					}}}}
+	\end{equation}
+	称为\textbf{( \( n \) 阶)有限连分数}，它的值是一个实数。当 \( x_0, \dots, x_n
+	\)均为整数时称为($n$阶)\em{限简单连分数}，它的值是一个有理分数。为书写方便，把有限连分数记作
+	\begin{equation}
+		\langle x_0,x_1,\dots,x_n\rangle.
+		\label{eq:有限连分数定义简}
+	\end{equation}
+	设 \( 0 \le k \le n \) ， 我们把有限连分数
+	\begin{equation}
+		\langle x_0, x_1, \dots, x_k\rangle
+		\label{eq:第k个渐近分数}
+	\end{equation}
+	称为是有限连分数\eqref{eq:有限连分数定义简}的第 \( k \)个渐进分数。当\eqref{eq:有限连分数定义简}是有限简单连分数(即 \( x_0,\dots,x_n
+	\)均为整数)时，把 \( x_k(0 \le k \le n) \) 称为是它的第 \( k \)
+	个部分商。当式\eqref{eq:有限连分数定义}(或\eqref{eq:有限连分数定义简})中的 \( n \to \infty
+	\)时，我们把相应的表示式\eqref{eq:有限连分数定义}(或\eqref{eq:有限连分数定义简})称为无限连分数，即表示式
+	\begin{equation}\label{eq:无限连分数定义}
+		x_0 + \cfrac{1}{x_1 +
+			\cfrac{1}{x_2 +
+				\cfrac{1}{x_3 +
+					\genfrac{}{}{0pt}{}{\vphantom{1}}{\ddots}
+				}}},
+	\end{equation}
+	或者简记为
+	\begin{equation}
+		\langle x_0, x_1, x_2, \dots\rangle.
+		\label{eq:无限连分数定义简}
+	\end{equation}
+	当 \( x_j(j \ge 0) \)均为整数时，称\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})为无限简单连分数。同样的，对任意
+	\( k \ge 0
+	\)，有限连分数\eqref{eq:有限连分数定义简}称为是无限连分数\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})的第 \( k
+	\)个渐近分数；当\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})是无限简单连分数时， \( x_k(k \ge 0) \)称为是它的第
+	\( k \)个部分商。如果存在极限
+	\begin{equation}
+		\lim_{k\to\infty}\langle x_0,\dots,x_k\rangle = \theta,
+		\label{eq:无限连分数收敛}
+	\end{equation}
+	那么，就说无限连分数\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})是收敛的， \( \theta \)
+	称为是无限连分数\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})的值，记作
+	\begin{equation}
+		\langle x_0,x_1,x_2,\dots\rangle = \theta,
+		\label{eq:无限连分数值}
+	\end{equation}
+	或极限\eqref{eq:无限连分数收敛}不存在，则说无限连分数\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})是发散的。
+\end{definition}
+\begin{theorem}\label{thrm:大小}
+	设 \( x_0, x_1, x_2, \dots \)是无穷实数列， \( x_j > 0, j \ge 1 \)。那么，
+	\begin{enumerate}[label=\rm(\roman*)]
+		\item 对任意的整数 \( n \ge 1, r \ge 1 \)有
+		      \begin{flalign}
+			      \langle x_0,\dots,x_{n-1},x_n,\dots,x_{n+r}\rangle \nonumber &                                                                                        \\
+			                                                                   & = \langle x_0,\dots,x_{n-1},\langle x_n,\dots,x_{n+r}\rangle\rangle\nonumber           \\
+			                                                                   & = \langle x_0,\dots,x_{n-1}, x_{n} + 1 / \langle x_{n+1},\dots,x_{n+r}\rangle\rangle .
+			      \label{thrm01eq:01}
+		      \end{flalign}
+		      特别地有
+		      \begin{equation}
+			      \langle x_0, \dots, x_{n-1},x_n,x_{n+1}\rangle=\langle x_0,\dots,x_{n-1},x_n+1/x_{n+1}\rangle.
+			      \label{thrm01eq:02}
+		      \end{equation}
+		\item 对任意实数 \( \eta>0 \)及整数 \( n \ge 1 \)，
+		      \begin{gather}
+			      \langle x_0,\dots, x_{n-1}, x_n\rangle > \langle x_0,\dots,x_{n-1}, x_{n}+\eta\rangle, 2 \nmid n.
+			      \label{thrm01eq:03} \\
+			      \langle x_0,\dots, x_{n-1}, x_n\rangle < \langle x_0,\dots,x_{n-1},x_n + \eta\rangle, 2 \mid n.
+			      \label{thrm01eq:04}
+		      \end{gather}
+		\item 记
+		      \begin{equation}
+			      a^{(n)} = \langle x_0, \dots, x_n \rangle.
+		      \end{equation}
+		      我们有
+		      \begin{gather}
+			      a^{(n)} > a^{(n + r)}, 2 \nmid n, r \ge 1, \label{thrm01eq:05}\\
+			      a^{(n)} < a^{(n + r)}, 2 \mid n, r \ge 1, \label{thrm01eq:06}\\
+			      a^{(1)} > a^{(3)} > a^{(5)} > \dots > a^{2s - 1} > \dots, \label{thrm01eq:07}\\
+			      a^{(0)} < a^{(2)} < a^{(4)} < \dots < a^{2s} < \dots, \label{thrm01eq:08}\\
+			      a^{(2s-1)} > a^{(2t)}, s \ge 1, t \ge 0 \label{thrm01eq:09}.
+		      \end{gather}
+	\end{enumerate}
+
+\end{theorem}
+\begin{proof}
+	式\eqref{thrm01eq:01}和\eqref{thrm01eq:02}直接由有限连分数的定义式\eqref{eq:有限连分数定义}和\eqref{eq:有限连分数定义简}推出。对
+	\( n \) 用归纳法来证式\eqref{thrm01eq:03}和\eqref{thrm01eq:04}，当 \( n=1 \)和 \( n=2
+	\)时，式\eqref{thrm01eq:03}和\eqref{thrm01eq:04}显然成立。假设当 \( n=2k-1 \)和 \( n=2k (k \ge
+	1)\)时式\eqref{thrm01eq:03}和\eqref{thrm01eq:04}都成立。当 \( n=2(k+1)-1=2k+1 \)时，由式\eqref{thrm01eq:01}知
+	\begin{equation*}
+		\langle x_0, \dots, x_{2k+1} \rangle = \langle x_0, x_1, \langle x_2, \dots, x_{2k+1} \rangle\rangle.
+	\end{equation*}
+	由假设式\eqref{thrm01eq:03}对 \( n = 2k -1 \)成立，所以
+	\begin{equation*}
+		\langle x_2, \dots, x_{2k}, x_{2k+1} \rangle > \langle x_2, \dots, x_{2k}, x_{2k+1} + \eta \rangle.
+	\end{equation*}
+	由上式及 \( n=2 \)时式\eqref{thrm01eq:04}成立就推出
+	\begin{equation*}
+		\langle x_0, x_1, \langle x_2, \dots, x_{2k}, x_{2k+1} + \eta \rangle\rangle < \langle x_0, x_1, \langle
+		x_2, \dots, x_{2k}, x_{2k+1} \rangle\rangle,
+	\end{equation*}
+	由此及式\eqref{thrm01eq:01}就推出当 \( n=2(k+1) - 1 \)时式\eqref{thrm01eq:03}成立。当 \( n=2(k+1) = 2k + 2
+	\)时，由式\eqref{thrm01eq:01}知
+	\begin{equation*}
+		\langle x_0, \dots, x_{2k+2} \rangle = \langle x_0, x_1, \langle x_2, \dots, x_{2k+2}\rangle\rangle.
+	\end{equation*}
+	由假设式\eqref{thrm01eq:04}对 \( n=2k \)成立，所以
+	\begin{equation*}
+		\langle x_2, \dots, x_{2k+1}, x_{2k+2} \rangle < \langle x_2, \dots, x_{2k+1}, x_{2k+2} + \eta \rangle.
+	\end{equation*}
+	由上式及 \( n=2 \)时式\eqref{thrm01eq:04}成立就推出
+	\begin{equation*}
+		\langle x_0, x_1, \langle x_2, \dots, x_{2k+1}, x_{2k+2} \rangle\rangle < \langle x_0, x_1, \langle x_2,
+		\dots, x_{2k+1}, x_{2k+2} + \eta\rangle\rangle.
+	\end{equation*}
+	由此及式\eqref{thrm01eq:01}就推出当 \( n=2(k+1)
+	\)时式\eqref{thrm01eq:04}成立，这就证明了式\eqref{thrm01eq:03}和\eqref{thrm01eq:04}对所有的 \( n \)都成立。
+	由式\eqref{thrm01eq:01}知
+	\begin{equation*}
+		a^{(n+r)} = \langle x_0, \dots, x_{n-1}, x_{n} + 1/\langle x_{n+1}, \dots, x_{n+r}\rangle\rangle.
+	\end{equation*}
+	由此及式\eqref{thrm01eq:03}和\eqref{thrm01eq:04}就分别推出式\eqref{thrm01eq:05}和\eqref{thrm01eq:06}。取 \( n=1,
+	r=2,4,6,\dots \)，从式\eqref{thrm01eq:05}就推出式\eqref{thrm01eq:07}。取 \( n=0, r=2,4,6,\dots
+	\)，从式\eqref{thrm01eq:06}就推出式\eqref{thrm01eq:08}。最后由式\eqref{thrm01eq:05}及式\eqref{thrm01eq:06}得
+	\begin{equation*}
+		a^{2s-1} > a^{2s-1 + 2t + 1} = a^{(2s+2t)}  > a^{(2t)},
+	\end{equation*}
+	这就证明了式\eqref{thrm01eq:09}。
+\end{proof}
+下面要证明的性质是：如何给出一个明确的公式，用 \( x_0, x_1, \dots, x_n \)来表示连分数 \( \langle x_0, \dots, x_n \rangle
+\)的值。先来考虑几个具体表达式。
+\begin{align*}
+	\langle x_0 \rangle                & = \frac{x_0}{1},                                                              \\
+	\qquad \langle x_0, x_1 \rangle    & = x_0 + \frac{1}{x_1} = \frac{x_0x_1+1}{x_1},                                 \\
+	\langle x_0, x_1, x_2 \rangle      & = \langle x_0, x_1 + 1/x_2 \rangle = \frac{x_0(x_1 + 1/x_2) + 1}{x_1 + 1/x_2} \\
+	                                   & = \frac{(x_0x_1 + 1)x_2 + x_0}{x_1 x_2 + 1}                                   \\
+	\langle x_0, x_1, x_2, x_3 \rangle & = \langle x_0, x_1, x_2 +  1/x_3 \rangle                                      \\
+	                                   & = \frac{(x_0 x_1 + 1)(x_2 + 1 / x_3) + x_0}{x_1(x_2 + 1/x_3) + 1}             \\
+	                                   & = \frac{((x_0 x_1)x_2 + x_0)x_3 + (x_0 x_1 + 1)}{(x_1 x_2 + 1)x_3 + x_1}.
+\end{align*}
+因此，如果把 \( x_0, x_1, \dots \)看作是实变数，那么，
+\begin{equation}\label{eq:渐进分数}
+	\langle x_0, \dots, x_{n-1}, x_n \rangle = P_n / Q_n, \qquad n \ge 0,
+\end{equation}
+其中
+\begin{equation}
+	P_n = P_n(x_0, \dots, x_n), \qquad Q_n = Q_n(x_0, \dots, x_n)
+\end{equation}
+是变数 \( x_0, \dots, x_n \)的整系数多项式(事实上 \( Q_n \)与 \( x_0
+\)无关)，且对每个变数的方次至多为一次(为什么)。故而也可这样表示：
+\begin{equation}\label{eq:递推原形}
+	\langle x_0, \dots, x_{n-1}, x_n \rangle = \frac{K_{n-1}x_n + D_{n-1}}{H_{n-1}x_n + E_{n-1}}, \qquad n \ge 1,
+\end{equation}
+其中
+\begin{align*}
+	K_{n-1} = K_{n-1}(x_0, \dots, x_{n-1}),\qquad & H_{n-1} = H_{n-1} (x_0, \dots, x_{n-1}), \\
+	D_{n-1} = D_{n-1}(x_0, \dots, x_{n-1}),\qquad & E_{n-1} = E_{n-1} (x_0, \dots, x_{n-1}), \\
+\end{align*}
+都是变数 \( x_0, \dots, x_{n-1} \)的整系数多项式。在式\eqref{eq:递推原形}中，保持 \( x_0, \dots, x_{n-1} \)不变。令 \(
+x_n \to + \infty \)时，
+\begin{gather*}
+	\langle x_0, \dots, x_{n-1}, x_n \rangle \to \langle x_0, \dots, x_{n-1} \rangle = \frac{P_{n-1}}{Q_{n-1}}. \\
+	\frac{K_{n-1}x_n + D_{n-1}}{H_{n-1}x_n + E_{n-1}} \to \frac{K_{n-1}}{H_{n-1}}
+\end{gather*}
+令 \( x_n \to 0 \)时，
+\begin{gather*}
+	\langle x_0, \dots, x_{n-1}, x_n \rangle \to \langle x_0, \dots, x_{n-2} \rangle = \frac{P_{n-2}} {Q_{n-2}}, \\
+	\frac{K_{n-1}x_n + D_{n-1}}{H_{n-1}x_n + E_{n-1}} \to \frac{D_{n-1}}{E_{n-1}}
+\end{gather*}
+以上关系式告诉我们应该有
+\begin{equation}
+	K_{n-1} = P_{n-1}, \quad H_{n-1} = Q_{n-1}, \quad D_{n-1} = P_{n-2}, \quad E_{n-1} = Q_{n-2}.
+\end{equation}
+由此及式\eqrefl{eq:渐进分数,eq:递推原形}进一步推测应有递推关系式：
+\begin{align}\label{eq:递推}
+	\begin{cases}
+		P_n  = x_nP_{n-1} + P_{n-2}, \\
+		Q_n  = x_nQ_{n-1} + Q_{n-2}.
+	\end{cases}
+\end{align}
+
+\begin{theorem} \label{thrm:PQ}
+	设 \( x_0, x_1, x_2, \dots \)是无穷实数列， \( x_j > 0, j \ge 1 \)。再设
+	\begin{equation}\label{thrm02eq:00}
+		P_{-2} = 0,\qquad P_{-1} = 1,\qquad Q_{-2} = 1,\qquad Q_{-1} = 0,
+	\end{equation}
+	以及当 \( n \ge 0 \)时， \( P_n, Q_n \)由递推关系公式\eqref{eq:递推}给出。那么，
+	\begin{align}
+		\langle x_0, \dots, x_n \rangle & = P_n / Q_n,  & n \ge \phantom{-}0. \label{thrm02eq:01} \\
+		P_nQ_{n-1} - P_{n-1}Q_n         & = (-1)^{n+1}, & n \ge -1,           \label{thrm02eq:02} \\
+		P_nQ_{n-2} - P_{n-2}Q_n         & = (-1)^nx_n,  & n \ge \phantom{-}0,\label{thrm02eq:03}
+	\end{align}
+	以及
+	\begin{align}
+		\langle x_0, \dots, x_{n-1}, x_n \rangle - \langle x_0, \dots, x_{n-1} \rangle
+		 & = (-1)^{n+1}(Q_nQ_{n-1})^{-1}, & n \ge 1, \label{thrm02eq:04} \\
+		\langle x_0, \dots,x_{n-2},  x_{n-1}, x_n \rangle - \langle x_0, \dots, x_{n-2} \rangle
+		 & = (-1)^{n}(Q_nQ_{n-2})^{-1},   & n \ge 2.\label{thrm02eq:05}
+	\end{align}
+\end{theorem}
+
+\begin{proof}
+	当 \( n = 0 \) 时， \( P_0 = x_0,\, Q_0 = 1 \)， 所以式\eqref{thrm02eq:01}成立。假设当 \( n = k(\ge 0) \)时\eqref{thrm02eq:01}成立。当 \( n = k + 1 \) 时，由式\eqref{thrm01eq:02}得
+	\begin{equation*}
+		\langle x_0, \dots, x_{k-1}, x_k, x_{k+1} \rangle = \langle x_0, \dots, x_{k-1}, x_k + 1/x_{k+1} \rangle,
+	\end{equation*}
+	由假设当 \( n = k \) 时式 \eqref{thrm02eq:01}成立及式\eqref{eq:递推}，就推出
+	\begin{align*}
+		\langle x_0, \dots, x_{k-1}, x_k, x_{k+1} \rangle
+		 & = \frac{(x_k + 1/x_{k+1})P_{k-1}+P_{k-2}}{(x_k + 1/x_{k+1})Q_{k-1} + Q_{k-2}}           \\
+		 & = \frac{x_{k+1}(x_kP_{k-1} + P_{k-2})+P_{k-1}}{x_{k+1}(x_kQ_{k-1} + Q_{k-2}) + Q_{k-1}} \\
+		 & = \frac{x_{k+1}P_k + P_{k-1}}{x_{k+1}Q_k + Q_{k-1}}                                     \\
+		 & = \frac{P_{k+1}}{Q_{k+1}}
+	\end{align*}
+	即当 \( n = k + 1 \)时式\eqref{thrm02eq:01}也成立。所以，式\eqref{thrm02eq:01}当 \( n \ge 0 \)时都成立。
+
+	当 \( n = -1 \)时，由式\eqref{thrm02eq:00}推出\eqref{thrm02eq:02}成立。当 \( n \ge 0 \)时，由式\eqref{eq:递推}可得 (消去 \( x_n \))
+	\begin{equation}
+		P_nQ_{n-1} - P_{n-1}Q_n = -(P_{n-1}Q_{n-2} - P_{n-2}Q_{n-1}).
+	\end{equation}
+	反复利用上式就推出
+	\begin{equation*}
+		P_nQ_{n-1} - P_{n-1}Q_n = (-1)^{n+1}(P_{-1}Q_{-2} - P_{-2}Q_{-1}).
+	\end{equation*}
+	由此及式\eqref{thrm02eq:00}就得到式\eqref{thrm02eq:02}。注意到当 \( n \ge 0 \)时 \( Q_n > 0 \)，
+	由式\eqref{thrm02eq:01}及\eqref{thrm02eq:02}，就推出式\eqref{thrm02eq:04}。
+	当 \( n \ge 0 \)时，由式\eqref{eq:递推}可得
+	\begin{equation}
+		P_nQ_{n-2} - P_{n-2}Q_n = (P_{n-1}Q_{n-2} - P_{n-2}Q_{n-1})x_n.
+	\end{equation}
+	由此及式\eqref{thrm02eq:02}就证明了式\eqref{thrm02eq:03}。注意到 \( n \ge 0 \)时 \( Q_n > 0
+	\)，由式\eqref{thrm02eq:01}及\eqref{thrm02eq:02}就推出式\eqref{thrm02eq:05}
+\end{proof}
+
+\section{有限简单连分数}
+\setcounter{equation}{0}
+\setcounter{theorem}{0}
+本节讨论有限简单连分数的性质及其与有理分数的关系。
+设 \( a_0, a_1, a_2, \dots \)是一个无限整数列， \( a_j \ge 1, j \ge 1 \)。记有限简单连分数
+\begin{equation}
+	\langle a_0, a_1, \dots, a_n \rangle = r^{(n)}, \quad n \ge 0. \label{eq:有限简单连分数}
+\end{equation}
+定义整数列 \( \left\{ h_n\right\} \)与 	\( \left\{k_n\right\} \)：
+\begin{equation}\label{eq:hk定义}
+	\begin{cases}
+		h_{-2} = 0,\, h_{-1} = 1,\, k_{-2} - 1,\, k_{-1} = 0, \\
+		h_n = a_nh_{n-1} + h_{n-2},\, k_n = a_nk_{n-1} + k_{n-2}, n \ge 0 .
+	\end{cases}
+\end{equation}
+显见， \( h_0 = a_0,\, h_1 = a_1a_0 + 1 \)，
+\begin{equation}
+	1 = k_0 \ge a_1 = k_1 < k_2 < \dots < k_n < \dots, \quad k_n \to + \infty .
+\end{equation}
+这里的 \( \left\{ a_j \right\} \)， \(\left\{ h_n \right\}\)， \(\left\{ k_n
+\right\}\)就相当于\S\ref{subsec:连分数介绍} 中的\eqref{thrm:PQ} \(\left\{ x_j \right\}\)， \(\left\{ P_n \right\}\)，
+\(\left\{ Q_n \right\}\)取整数的特殊情形，作为\S\ref{subsec:连分数介绍}的定理\ref{thrm:PQ}的特例就得到
+\begin{theorem}
+	有限简单连分数\eqref{eq:有限简单连分数}的值是有理分数，
+	\begin{equation}
+		r^{(n)} = \langle a_0, \dots, a_n \rangle = h_n/k_n,\, \left(h_n, k_n\right) = 1, n \ge 0,
+	\end{equation}
+	其中 \( h_n, k_n \)由式\eqref{eq:hk定义}给出。此外，还有
+	\begin{align}
+		h_nk_{n-1} - h_{n-1}k_n = (-1)^{n+1}, \qquad               & n \ge -1,           \\
+		h_nk_{n-2} - h_{n-2}k_n = (-1)^{n}a_n, \qquad              & n \ge \phantom{-}0, \\
+		r^{(n)} - r^{(n-1)} = (-1)^{n+1}(k_nk_{n-1})^{-1}, \qquad  & n \ge \phantom{-}1, \\
+		r^{(n)} - r^{(n-2)} = (-1)^{n}a_n(k_nk_{n-2})^{-1}, \qquad & n \ge \phantom{-}2.
+	\end{align}
+	对于给定的一个不是整数的 有理分数 \( u_0 / u_1, u_1 \ge 2 \)，如何来得到它的有限简单连分数表示式呢？\S
+	\ref{subsec:连分数介绍}的例\ref{ex:化简分数}实际上已 经给出 了这种方法。利用第一章§5的辗转相除法可得：
+	\begin{equation}\label{eq:有限简单连分数辗转相除}
+		\begin{cases}
+			u_0 = b_0 u_1 + u_2, \hfill              0 < u_2 < u_1,     \\
+			u_1 = b_1 u_2 + u_3, \hfill              0 < u_3 < u_2,     \\
+			\begin{minipage}{0.4\textwidth}
+				\dotfill
+			\end{minipage}                              \\
+			u_{s-1} = b_{s-1} u_s + u_{s+1}, \hfill  0 < u_{s+1} < u_s, \\
+			u_s = b_s u_{s+1}. \hfill
+		\end{cases}
+	\end{equation}
+	由于 \( u_0 / u_1 \)不是整数，所以 \( s \ge 1 \)，以及 \( b_s \ge 2 \)。 设
+	\begin{equation}
+		\xi_j = u_j / u_{j+1}, \qquad 0 \le j \le s.
+	\end{equation}
+	由式\eqref{eq:有限简单连分数辗转相除}得
+	\begin{equation}
+		\begin{cases}
+			\xi_j = b_j + 1 / \xi_{j + 1} = \langle b_j, \xi_{j+1} \rangle, \qquad 0 \le j \le s \\
+			\xi_s = b_s.
+		\end{cases}
+	\end{equation}
+	利用\S \ref{subsec:连分数介绍}式\eqref{thrm01eq:01}得
+	\begin{align}
+		\xi_0 & = u_0 / u_1 = \langle b_0, \xi_1 \rangle = \langle b_0, \langle b_1, \xi_2 \rangle \rangle \nonumber \\
+		      & = \langle b_0, b_1, \xi_2 \rangle = \langle b_0, b_1, \langle b_2, \xi_3 \rangle \rangle   \nonumber \\
+		      & = \langle b_0, b_1, b_2, \xi_3 \rangle = \dots \nonumber                                             \\
+		      & = \langle b_0, b_1, \dots, b_{s-1}, \xi_s \rangle \nonumber                                          \\
+		      & = \langle b_0, b_1, \dots, b_s \rangle, \qquad b_s > 1. \label{eq:有限简单连分数表达式1}
+	\end{align}
+	这就得到了 \( \xi_0 = u_0 / u_1 \)的有限简单连分数表示式。由于 \( b_s \ge 2 \)，由\S \ref{subsec:连分数介绍}得
+	\begin{align}
+		\xi_0 & = u_0 / u_1 = \langle b_0, b_1, \dots, (b_s - 1) + 1/1 \rangle\nonumber                  \\
+		      & = \langle b_0, b_1, \dots, b_{s-1}, b_s - 1, 1 \rangle. \label{eq:有限简单连分数表达式2}
+	\end{align}
+	这样，有理分数 \( u_0 / u_1
+	\)就有两个有限简单连分数表示式\eqref{eq:有限简单连分数表达式1}和\eqref{eq:有限简单连分数表达式2}，\eqref{eq:有限简单连分数表达式1}的最后一个部分商是
+	\( b_s \ge 2
+	\)，\eqref{eq:有限简单连分数表达式2}的最后一个部分商为1。那么，是否会有别的的形式的表示式呢？回答是否定的。这是下面的唯一性定理。
+\end{theorem}
+
