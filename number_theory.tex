@@ -8,7 +8,7 @@ linkcolor = blue!80!green}
 \usepackage{indentfirst}
 \usepackage{csquotes}
 \usepackage{ulem}
-\usepackage{enumitem}
+\usepackage[inline, shortlabels]{enumitem}
 \usepackage{romannum}
 
 \hfuzz=2pt
@@ -26,17 +26,34 @@ linkcolor = blue!80!green}
   {\bfseries\sffamily} % 标题字体
   {.} % 标题标点
   { } % 标题与正文之间的间距
-  {} % 标题格式
+  {\centering \thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}} % 标题格式
 
 \theoremstyle{mydefinitionstyle}
 
 \newtheorem{definition}{定义}
 \newtheorem{theorem}{定理}
-\newtheorem{example}{例}
 \newtheorem*{solution}{解}
+\newtheorem{example}{例}
+
 \numberwithin{equation}{section}
+\numberwithin{example}{section}
+\numberwithin{definition}{section}
+\numberwithin{theorem}{section}
+
+\newcounter{exercise}
+\newenvironment{exercise}[1]{
+  \stepcounter{exercise}
+  {\centering \Large\textbf{习题 \theexercise}\\}
+  #1
+}
+
 \renewcommand{\theequation}{\arabic{equation}}
+\renewcommand{\thetheorem}{\arabic{theorem}}
+\renewcommand{\theexample}{\arabic{example}}
+\renewcommand{\thedefinition}{\arabic{definition}}
+\renewcommand{\theexercise}{\zhnum{exercise}}
 \renewcommand{\thefootnote}{\textcircled{\arabic{footnote}}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{tikz}
 \newcommand{\eqrefl}[1]{
@@ -48,6 +65,7 @@ linkcolor = blue!80!green}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{booktabs}
+\usepackage{tabularx}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
