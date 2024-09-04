@@ -1,5 +1,5 @@
 \chapter{连分数}
-\section{什么是连分数}\label{subsec:连分数介绍}
+\section{什么是连分数}\label{sec:连分数介绍}
 连分数是一个很有用的工具。我们先来举几个例子，说明什么叫连分数以及它的用处.
 \begin{example}\label{ex:开根号}
 	如果你手边没有平方根表，也没有计算器，那么能用 什么简单方法来求 \( \sqrt{11} \)的近似值？当然可以用通常的求平方根的
@@ -20,16 +20,16 @@
 			\cfrac{1}{6 +
 				\cfrac{1}{3 +
 					(\sqrt{11} -3)/2
-				}}}          \label{cf5}
-	\end{align}
-	\begin{align}
-		 & =
+		}}}          \label{cf5} \\
+		          & =
 		3 + \cfrac{1}{3 +
 			\cfrac{1}{6 +
 				\cfrac{1}{3 +
 					\cfrac{1}{6 +
 						(\sqrt{11} -3)
-		}}}}          \label{cf6} \\
+					}}}}          \label{cf6}
+	\end{align}
+	\begin{align}
 		 & =
 		3 + \cfrac{1}{3 +
 			\cfrac{1}{6 +
@@ -116,7 +116,7 @@
 \begin{example}
 	至今，除了试算具体数值，我们还没有方法来求解不定方程
 	\begin{equation}
-		x^2 - 11y^2 = 1, x > 0, y > 0. \label{eq:不定方程}
+		x^2 - 11y^2 = 1, \qquad x > 0, y > 0. \label{eq:不定方程}
 	\end{equation}
 	这个不定方程可化为
 	\begin{align}
@@ -144,7 +144,7 @@
 						\cfrac{1}{x_n}
 					}}}}
 	\end{equation}
-	ml	称为\textbf{( \( n \) 阶)有限连分数}，它的值是一个实数。当 \( x_0, \dots, x_n
+	称为\textbf{( \( n \) 阶)有限连分数}，它的值是一个实数。当 \( x_0, \dots, x_n
 	\)均为整数时称为\textbf{( \( n \)阶) 有限简单连分数}，它的值是一个有理分数。为书写方便，把有限连分数记作
 	\begin{equation}
 		\langle x_0,x_1,\dots,x_n\rangle.
@@ -156,8 +156,8 @@
 		\label{eq:第k个渐近分数}
 	\end{equation}
 	称为是有限连分数\eqref{eq:有限连分数定义简}的\textbf{第 \( k \)个渐进分数}。当\eqref{eq:有限连分数定义简}是有限简单连分数(即 \( x_0,\dots,x_n
-	\)均为整数)时，把 \( x_k(0 \leqslant k \leqslant n) \) 称为是它的第 \( k \)
-	个部分商。当式\eqref{eq:有限连分数定义}(或\eqref{eq:有限连分数定义简})中的 \( n \to \infty
+	\)均为整数)时，把 \( x_k(0 \leqslant k \leqslant n) \) 称为是它的\textbf{第 \( k \)
+		个部分商}。当式\eqref{eq:有限连分数定义}(或\eqref{eq:有限连分数定义简})中的 \( n \to \infty
 	\)时，我们把相应的表示式\eqref{eq:有限连分数定义}(或\eqref{eq:有限连分数定义简})称为\textbf{无限连分数}，即表示式
 	\begin{equation}\label{eq:无限连分数定义}
 		x_0 + \cfrac{1}{x_1 +
@@ -180,13 +180,14 @@
 		\label{eq:无限连分数收敛}
 	\end{equation}
 	那么，就说\textbf{无限连分数}\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})\textbf{是收敛的}， \( \theta \)
-	称为是无限连分数\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})的值，记作
+	称为是\textbf{无限连分数\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})的值}，记作
 	\begin{equation}
 		\langle x_0,x_1,x_2,\dots\rangle = \theta,
 		\label{eq:无限连分数值}
 	\end{equation}
 	或极限\eqref{eq:无限连分数收敛}不存在，则说\textbf{无限连分数}\eqref{eq:无限连分数定义}(或\eqref{eq:无限连分数定义简})\textbf{是发散的}。
 \end{definition}
+本章主要讨论简单连分数的基本理论及其应用。作为本节的结束，我们来证明有限连分数的一些最基本的性质，这在以后是经常要用的。
 \begin{theorem}\label{thrm:大小}
 	设 \( x_0, x_1, x_2, \dots \)是无穷实数列， \( x_j > 0, j \geqslant 1 \)。那么，
 	\begin{enumerate}[label=\rm(\roman*)]
@@ -210,7 +211,7 @@
 			      \label{thrm01eq:04}
 		      \end{gather}
 		\item 记
-		      \begin{equation}
+		      \begin{equation}\label{eq:an标记}
 			      a^{(n)} = \langle x_0, \dots, x_n \rangle.
 		      \end{equation}
 		      我们有
@@ -286,7 +287,7 @@
 	\langle x_0, \dots, x_{n-1}, x_n \rangle = P_n / Q_n, \qquad n \geqslant 0,
 \end{equation}
 其中
-\begin{equation}
+\begin{equation}\label{eq:递推函数形式}
 	P_n = P_n(x_0, \dots, x_n), \qquad Q_n = Q_n(x_0, \dots, x_n)
 \end{equation}
 是变数 \( x_0, \dots, x_n \)的整系数多项式(事实上 \( Q_n \)与 \( x_0
@@ -404,19 +405,140 @@ x_n \to + \infty \)时，
 
 	\begin{table}[htbp]
 		\centering
-		\begin{tabular}{c c c c c c c c c c c}\toprule
+		\begin{tabularx}{\textwidth}{XXXXXXXXXXX}\toprule
 			\( n \)   & 0 & 1 & 2 & 3 & 4 & 5  & 6  & 7  & 8  & 9  \\ \midrule
 			\( x_n \) & 1 & 1 & 1 & 1 & 1 & 1  & 1  & 1  & 1  & 1  \\
 			\( P_n \) & 1 & 2 & 3 & 5 & 8 & 13 & 21 & 34 & 55 & 89 \\
 			\( Q_n \) & 1 & 1 & 2 & 3 & 5 & 8  & 13 & 21 & 34 & 55 \\ \bottomrule
-		\end{tabular}
+		\end{tabularx}
 	\end{table}
-	因此，各个渐近分数 \( P_n/Qn \) \( 1/1, 2/1, 3/2, 5/3, 8/5, 13/8, 21/31, 34/21, 55/34, 89/55 \)。显见， \( P_n, Q_n
+	因此，各个渐近分数 \( P_n/Qn \)依次为 \( 1/1, 2/1, 3/2, 5/3, 8/5, 13/8, 21/31, 34/21, 55/34, 89/55 \)。显见， \( P_n, Q_n
 	\)均为Fibonacci数列，且有 \( P_n = Q_{n+1}, n \geqslant 0 \)。
 \end{solution}
-\section{有限简单连分数}
-\setcounter{equation}{0}
-\setcounter{theorem}{0}
+
+\begin{exercise}
+	\begin{enumerate}
+		\item 计算以下有限连分数的值和各个渐近分数：
+
+		      \noindent
+		      \begin{enumerate*}[label={(\roman*)}, itemjoin={{,\hspace{3em}}}]
+			      \item \( \langle 1,2,3 \rangle \)
+			      \item \( \langle 0,1,2,3 \rangle \)
+			      \item \( \langle 3,2,1 \rangle \)
+			      \item \( \langle 2,1,1,4,1,1 \rangle \)
+			      \item \( \langle -4,2,1,7,8 \rangle \)
+			      \item \( \langle -1,1/2,1/3 \rangle \)
+			      \item \( \langle 1/2,1/4,1/8,1/16 \rangle \)
+		      \end{enumerate*}
+		\item 把下面的有理数表为有限简单连分数，并求各个渐近分数：
+
+		      \noindent
+		      \begin{enumerate*}[label=(\roman*), itemjoin={{,\hspace{3em}}}, after={{.}}]
+			      \item \( 121/21 \)
+			      \item \( -19/29 \)
+			      \item \( 177/292 \)
+			      \item \( 873/4867 \)
+		      \end{enumerate*}
+
+		\item 求有限简单连分数 \( \langle 2,1,2,1,1,4,1,1,6,1,1,8 \rangle \)的各个渐近分数及其值。并与自然对数 \( e
+		      \)的值比较。
+
+		\item 设 \( a, b \)是正数。证明
+		      \begin{equation*}
+			      a + \sqrt{a^2 + b} = 2a + \dfrac{b}{2a + \dfrac{b}{2a + \dfrac{b}{a + \sqrt{a^2 + b}}}},
+		      \end{equation*}
+		      以及
+		      \begin{equation*}
+			      a + \sqrt{a^2 + b} = \langle 2a, 2a/b, 2a, 2a/b, 2a, 2a/b, a + \sqrt{a^2 + b} \rangle .
+		      \end{equation*}
+
+		\item 若 \( \xi_0 = \langle x_0, x_1, \cdots, x_n \rangle, x_0 > 0 \)，则 \( \xi_0^{-1}= \langle 0, x_0, x_1,
+		      \cdots, x_n \rangle. \)
+
+		\item 设 \( {x_j},{P_j},{Q_j} \) 同\S \ref{sec:连分数介绍}定理\ref{thrm:PQ}。证明：
+		      \begin{enumerate}[label=(\roman*)]
+			      \item 当 \( n \geqslant 1\)时， \( Q_n/Q_{n-1} = \langle x_n, x_{n-1}, \cdots, x_1 \rangle. \)
+			      \item 当 \( x_0 > 0, n \geqslant 0 \)时， 	\( P_n/P_{n-1} = \langle x_n, x_{n-1}, \cdots, x_1, x_0
+			            \rangle. \)
+		      \end{enumerate}
+		\item 在\S\ref{sec:连分数介绍}定理\ref{thrm:PQ}的条件和符号下：证明：
+		      \begin{enumerate}[label=(\roman*)]
+			      \item 当 \( n \geqslant 1 \)时
+			            \begin{align*}
+				             & Q_{2n} \geqslant x_1(x_2 + x_4 + \cdots + x_{2n}) + 1, \\
+				             & Q_{2n-1} \geqslant x_1 + x_3 + \cdots + x_{2n-1},      \\
+				             & Q_n < (1 + x_1)(1+x_2)\cdots(1+x_n).
+			            \end{align*}
+			      \item 无限连分数 \( \langle x_0, x_1, x_2, \cdots \rangle \)收敛的就充要条件是级数 \( \displaystyle
+			            \sum_{j=0}^{\infty}x_j \)发散。
+			      \item \( \langle 1/2, 1/2, 1/2, \cdots \rangle = (\sqrt{17} + 1)/4. \)
+			      \item \( \langle 4,1/4,4,1/4, \cdots \rangle = \sqrt{20} + 2. \)
+		      \end{enumerate}
+
+		\item 证明：
+		      \begin{equation*}
+			      \langle 0,x_1, \cdots, x_n \rangle = 1/(Q_0Q_1) - 1/(Q_1Q_2) + \cdots + (-1)^{n-1}/(Q_{n-1}Q_n).
+		      \end{equation*}
+		\item 证明：当 \( n \geqslant 0 \)时 \( Q_{n+1}(x_0, x_1, \cdots, x_{n+1}) = P_n(x_1, x_2, \cdots, x_{n+1}),
+		      \)这里 \( P_n, Q_n \)同\S\ref{sec:连分数介绍}式\eqref{eq:递推函数形式}。
+		\item 证明：
+		      \begin{enumerate}[label=(\roman*)]
+			      \item 当 \( n \geqslant 0 \)时，
+			            \begin{equation*}
+				            P_n =
+				            \begin{vmatrix}
+					            x_0 & -1  &        &        &         & 0   \\
+					            1   & x_1 & -1     &        &         &     \\
+					                & 1   & x_2    & \ddots &         &     \\
+					                &     & \ddots & \ddots & \ddots  &     \\
+					                &     &        & \ddots & x_{n-1} & -1  \\
+					            0   &     &        &        & 1       & x_n
+				            \end{vmatrix}.
+			            \end{equation*}
+			      \item 当 \( n \geqslant 1 \)时
+			            \begin{equation*}
+				            Q_n =
+				            \begin{vmatrix}
+					            x_1 & -1  &        &        &         & 0   \\
+					            1   & x_2 & -1     &        &         &     \\
+					                & 1   & x_3    & \ddots &         &     \\
+					                &     & \ddots & \ddots & \ddots  &     \\
+					                &     &        & \ddots & x_{n-1} & -1  \\
+					            0   &     &        &        & 1       & x_n
+				            \end{vmatrix}.
+			            \end{equation*}
+		      \end{enumerate}
+		\item 证明：当 \( n \geqslant 1 \) 时
+		      \begin{equation*}
+			      \begin{pmatrix}
+				      P_n & P_{n-1} \\
+				      Q_n & Q_{n-1}
+			      \end{pmatrix}
+			      =
+			      \begin{pmatrix}
+				      x_0 & 1 \\
+				      1   & 0
+			      \end{pmatrix}
+			      \begin{pmatrix}
+				      x_1 & 1 \\
+				      1   & 0
+			      \end{pmatrix}
+			      \cdots
+			      \begin{pmatrix}
+				      x_n & 1 \\
+				      1   & 0
+			      \end{pmatrix}.
+		      \end{equation*}
+		\item 设 \( a^{(j)} \)由\S\ref{sec:连分数介绍}式\eqref{eq:an标记}给出， \( P_j, Q_j
+		      \)由\S\ref{sec:连分数介绍}定理\ref{thrm:PQ}给出。证明：当 \( 1 \leqslant j \leqslant n \)时，
+		      \begin{equation*}
+			      Q_j|Q_{j-1}a^{(n)}-P_{j-1}| + Q_{j-1}|Q_ja^{(n)} - P_j| = 1.
+		      \end{equation*}
+
+	\end{enumerate}
+\end{exercise}
+
+\section{有限简单连分数} \label{sec:有限简单连分数}
 本节讨论有限简单连分数的性质及其与有理分数的关系。
 设 \( a_0, a_1, a_2, \dots \)是一个无限整数列， \( a_j \geqslant 1, j \geqslant 1 \)。记有限简单连分数
 \begin{equation}
@@ -434,8 +556,8 @@ x_n \to + \infty \)时，
 	1 = k_0 \geqslant a_1 = k_1 < k_2 < \dots < k_n < \dots, \quad k_n \to + \infty .
 \end{equation}
 这里的 \( \left\{ a_j \right\} \)， \(\left\{ h_n \right\}\)， \(\left\{ k_n
-\right\}\)就相当于\S\ref{subsec:连分数介绍} 中的\eqref{thrm:PQ} \(\left\{ x_j \right\}\)， \(\left\{ P_n \right\}\)，
-\(\left\{ Q_n \right\}\)取整数的特殊情形，作为\S\ref{subsec:连分数介绍}的定理\ref{thrm:PQ}的特例就得到
+\right\}\)就相当于\S\ref{sec:连分数介绍} 中的\eqref{thrm:PQ} \(\left\{ x_j \right\}\)， \(\left\{ P_n \right\}\)，
+\(\left\{ Q_n \right\}\)取整数的特殊情形，作为\S\ref{sec:连分数介绍}的定理\ref{thrm:PQ}的特例就得到
 \begin{theorem}
 	有限简单连分数\eqref{eq:有限简单连分数}的值是有理分数，
 	\begin{equation}
@@ -445,11 +567,13 @@ x_n \to + \infty \)时，
 	\begin{align}
 		h_nk_{n-1} - h_{n-1}k_n = (-1)^{n+1}, \qquad               & n \geqslant -1,           \\
 		h_nk_{n-2} - h_{n-2}k_n = (-1)^{n}a_n, \qquad              & n \geqslant \phantom{-}0, \\
-		r^{(n)} - r^{(n-1)} = (-1)^{n+1}(k_nk_{n-1})^{-1}, \qquad  & n \geqslant \phantom{-}1, \\
+		r^{(n)} - r^{(n-1)} = (-1)^{n+1}(k_nk_{n-1})^{-1}, \qquad  & n \geqslant \phantom{-}1,
+		\label{eq:有限简单连分数误差1}                                                         \\
 		r^{(n)} - r^{(n-2)} = (-1)^{n}a_n(k_nk_{n-2})^{-1}, \qquad & n \geqslant \phantom{-}2.
+		\label{eq:有限简单连分数误差2}
 	\end{align}
 	对于给定的一个不是整数的 有理分数 \( u_0 / u_1, u_1 \geqslant 2 \)，如何来得到它的有限简单连分数表示式呢？\S
-	\ref{subsec:连分数介绍}的例\ref{ex:化简分数}实际上已 经给出 了这种方法。利用第一章§5的辗转相除法可得：
+	\ref{sec:连分数介绍}的例\ref{ex:化简分数}实际上已 经给出 了这种方法。利用第一章§5的辗转相除法可得：
 	\begin{equation}\label{eq:有限简单连分数辗转相除}
 		\begin{cases}
 			u_0 = b_0 u_1 + u_2, \hfill              0 < u_2 < u_1,     \\
@@ -472,7 +596,7 @@ x_n \to + \infty \)时，
 			\xi_s = b_s.
 		\end{cases}
 	\end{equation}
-	利用\S \ref{subsec:连分数介绍}式\eqref{thrm01eq:01}得
+	利用\S \ref{sec:连分数介绍}式\eqref{thrm01eq:01}得
 	\begin{align}
 		\xi_0 & = u_0 / u_1 = \langle b_0, \xi_1 \rangle = \langle b_0, \langle b_1, \xi_2 \rangle \rangle \nonumber \\
 		      & = \langle b_0, b_1, \xi_2 \rangle = \langle b_0, b_1, \langle b_2, \xi_3 \rangle \rangle   \nonumber \\
@@ -480,7 +604,7 @@ x_n \to + \infty \)时，
 		      & = \langle b_0, b_1, \dots, b_{s-1}, \xi_s \rangle \nonumber                                          \\
 		      & = \langle b_0, b_1, \dots, b_s \rangle, \qquad b_s > 1. \label{eq:有限简单连分数表达式1}
 	\end{align}
-	这就得到了 \( \xi_0 = u_0 / u_1 \)的有限简单连分数表示式。由于 \( b_s \geqslant 2 \)，由\S \ref{subsec:连分数介绍}得
+	这就得到了 \( \xi_0 = u_0 / u_1 \)的有限简单连分数表示式。由于 \( b_s \geqslant 2 \)，由\S \ref{sec:连分数介绍}得
 	\begin{align}
 		\xi_0 & = u_0 / u_1 = \langle b_0, b_1, \dots, (b_s - 1) + 1/1 \rangle\nonumber                  \\
 		      & = \langle b_0, b_1, \dots, b_{s-1}, b_s - 1, 1 \rangle. \label{eq:有限简单连分数表达式2}
@@ -490,3 +614,153 @@ x_n \to + \infty \)时，
 	\( b_s \geqslant 2
 	\)，\eqref{eq:有限简单连分数表达式2}的最后一个部分商为1。那么，是否会有别的的形式的表示式呢？回答是否定的。这是下面的唯一性定理。
 \end{theorem}
+
+\begin{theorem}\label{thrm:简单连分数相等}
+	设 	\( \langle a_0, \cdots, a_n \rangle, \langle b_0, \cdots, b_s \rangle \)是两个简单连分数， \( a_n > 1, b_s > 1
+	\)。若
+	\begin{equation}
+		\langle a_0, \cdots, a_n \rangle = \langle b_0, \cdots, b_s \rangle,
+		\label{eq:简单连分数相等}
+	\end{equation}
+	则必有 \( s = n, a_j = b_j, 0 \leqslant j \leqslant n \)。
+\end{theorem}
+\begin{proof}
+	不妨设 \( s \geqslant n \)。对 \( n \)用归纳法。当 \( n=0 \)时，若 \( s \geqslant 1
+	\)，则由\S\ref{sec:连分数介绍}式\eqref{thrm01eq:01}得
+	\begin{align*}
+		a_0 & = \langle b_0, b_1, \cdots, b_s \rangle = \langle b_0, \langle b_1, \cdots, b_s \rangle \rangle \\
+		    & = b_0 + 1 / \langle b_1, \cdots, b_s \rangle.
+	\end{align*}
+	由于 \( b_s > 1 \)，所以 \( \langle b_1, \cdots, b_s \rangle > 1\)，因此上式不可能成立。这就推出 \( s=0, a_0=b_0
+	\)。所以结论当 \( n=0 \)时成立。假设当 \( n=k(\geqslant 0) \)时结论成立。当 \( n=k+1
+	\)时，由\S\ref{sec:连分数介绍}式\eqref{thrm01eq:01}得(注意 \( s \geqslant n \geqslant 1 \))
+	\begin{gather*}
+		\langle a_0, a_1, \cdots, a_{k+1}\rangle = a_0 + 1/ \langle a_1, \cdots, a_{k+1} \rangle. \\
+		\langle b_0, b_1, \cdots, b_s \rangle = b_0 + 1/ \langle b_1, \cdots, b_s \rangle.
+	\end{gather*}
+	由 \( a_{k+1} > 1 \)及 \( b_s > 1 \)知 \( \langle a_1, \cdots, a_{k+1} \rangle > 1 \)及 \( \langle b_1, \cdots, b_s
+	\rangle > 1 \)。因而，由条件\eqref{eq:简单连分数相等} \(  n=k+1  \)，就推出 \( a_0 = b_0 \)及
+	\begin{equation*}
+		\langle a_1, \cdots, a_{k+1} \rangle = \langle b_1, \cdots, b_s \rangle.
+	\end{equation*}
+	由归纳假设知，从上式就推得 \( s = k + 1 \)及 \( a_j = b_j \)， \( 1 \geqslant j \geqslant k + 1 \)。这就证明了当 \(
+	n = k + 1\)时结论也成立。所以结论对一切 \( n \geqslant 0 \)都成立。
+\end{proof}
+
+(由定理\ref{thrm:简单连分数相等}及式\eqref{eq:有限简单连分数表达式1}就立即推出:
+\begin{theorem}
+	任一不是整数的有理分数 \( u_0 / u_1 (\)有且仅有式\eqref{eq:有限简单连分数表达式1}及\eqref{eq:有限简单连分数表达式2}给出的两种有限简单连分数表示式，其中 \( b_0, \cdots, b_s
+	\)由 \eqref{eq:有限简单连分数辗转相除}给出， \( s \geqslant 1, b_s > 1 \)。
+\end{theorem}
+
+\begin{example}
+	求 \( 13/5 \)的有限简单连分数。
+\end{example}
+\begin{solution}
+	我们按式\eqref{eq:有限简单连分数表达式1}来求。
+	\begin{align*}
+		13/5 & = \langle 2 + 3/5 \rangle = \langle 2, 5/3 \rangle = \langle 2, \langle 1+2/3 \rangle \rangle \\
+		     & = \langle 2, \langle 1, 3/2 \rangle \rangle = \langle 2, 1, 1 + 1/2 \rangle                   \\
+		     & = \langle 2, 1, 1, 2 \rangle.
+	\end{align*}
+	这个有限简单连分数的特点是：从左往右和从右往左的数字是一样的(参见习题二第5题)。 \( 13/5 \)还可表为
+	\begin{equation*}
+		13/5 = \langle 2, 1, 1, 1, 1 \rangle.
+	\end{equation*}
+\end{solution}
+
+\begin{example}
+	求 \( 7700/2145 \)的有限简单连分数，及它的各个渐近分数。
+\end{example}
+
+\begin{solution}
+	\begin{align*}
+		7700/2145 & = \langle 3 + 1265/2145 \rangle = \langle 3, 2145/1265 \rangle               \\
+		          & = \langle 3, 1 + 880/1265 \rangle = \langle 3, 1, 1265/880 \rangle           \\
+		          & = \langle 3, 1, 1 + 385/880 \rangle = \langle 3, 1, 1, 880/385 \rangle       \\
+		          & = \langle 3, 1, 1, 2 + 110/385 \rangle = \langle 3, 1, 1, 2, 385/110 \rangle \\
+		          & = \langle 3, 1, 1, 2, 3 + 55/110 \rangle = \langle 3, 1, 1, 2, 3, 2 \rangle  \\
+		          & = \langle 3, 1, 1, 2, 3, 1, 1 \rangle
+	\end{align*}
+	按\S\ref{sec:有限简单连分数}式\eqref{eq:hk定义}列表来求 \( h_n, k_n \)(见表\ref{tab:求hnkn})及渐近分数 \( h_n/k_n
+	\)。由表\ref{tab:求hnkn}知
+	\begin{table}[htbp]
+		\centering
+		\begin{tabularx}{\textwidth}{XXXXXXX}\toprule
+			\( n \)   & 0 & 1 & 2 & 3  & 4  & 5   \\ \midrule
+			\( a_n \) & 3 & 1 & 1 & 2  & 3  & 2   \\
+			\( h_n \) & 3 & 4 & 7 & 18 & 61 & 140 \\
+			\( k_n \) & 1 & 1 & 2 & 5  & 17 & 39  \\\bottomrule
+		\end{tabularx}
+		\caption{求 \( h_n, k_n \)}
+		\label{tab:求hnkn}
+	\end{table}
+
+	渐近分数依次为
+	\begin{equation*}
+		3/1, 4/1, 7/2, 18/5, 61/17, 140/39 = 7700/2145。
+	\end{equation*}
+
+	这分数值化简后为 \( 140/39
+	\)。虽然原来的分数不是既约的，但渐近分数一定是既约的。利用式\eqref{eq:有限简单连分数误差1}和\eqref{eq:有限简单连分数误差2}可以计算原分数与渐近分数的误差，如
+	\begin{align*}
+		140/39 - 61/17 & = h_5/k_5 - h_4/k_4 = 1/(k_4k_5)    \\
+		               & = 1 / (17 \cdot 39) = 1 / 663,      \\
+		140/39 - 18/5  & = h_5/k_5 - h_3/k_3 = -a_5/(k_3k_5) \\
+		               & = -2/(5\cdot39) = -2/195.
+	\end{align*}
+	其它几个误差请读者自己计算。
+\end{solution}
+
+\begin{exercise}
+	\begin{enumerate}
+		\item 设 \( a/b \) 是有理分数， \( a_0, \cdots, a_n \)是它的有限简单连分数， 以及 \( b \geqslant 1 \)。证明：
+		      \begin{equation*}
+			      ak_{n-1} - bh_{n-1} = (-1)^{n+1}(a,b)。
+		      \end{equation*}
+		\item 具体说明第1题给出了求最大公约数 \( (a,b) \)及解不定方程 \( ax+by=c \)的一个新方法.用这个方法来求解以下的最大公约
+		      数和不定方程。
+		      \begin{enumerate}[label=(\roman*)]
+			      \item \( 205x+93y=1 \)；
+			      \item  \( 65x-56y= -1 \)；
+			      \item \( 13x+17y=5 \)；
+			      \item \( 77x+63y=40 \)；
+			      \item \( (314,159)\)；
+			      \item  \( (4144,7696) \)。
+		      \end{enumerate}
+		\item 求有理分数
+		      \begin{enumerate*}[label=(\roman*), itemjoin={,\hspace{1em}}]
+			      \item \( 7/11 \)
+			      \item \( 173/55 \)
+			      \item \( -43/1001 \)
+			      \item \( 5391/3976 \)
+			      \item \( -873/4867 \)
+		      \end{enumerate*}
+		      的两种有限简单连分数表示式，以及它们的各个渐近分数、渐近分数与有理分数的误差.
+		\item 设 \( r_0 = \langle a_0, \cdots, a_n \rangle, s_0 = \langle b_0, \cdots, b_n, b_{n+1} \rangle
+		      \)是两个有限简单连分数。试求：
+		      \begin{enumerate*}[label=(\roman*)]
+			      \item \( r_0 = s_0 \)的充要条件；
+			      \item \( r_0 < s_0 \)的充要条件。
+		      \end{enumerate*}
+		\item 设有理分数 \( a/b((a,b) = 1, a\geqslant b \geqslant 1) \)的有限简单连分数是 \( a_0, a_1, \cdots, a_n
+		      \)。证明：
+		      \begin{equation*}
+			      \langle a_0, a_1, \cdots, a_{n-1}, a_n \rangle = \langle a_n, a_{n-1}, \cdots, a_1, a_0 \rangle
+		      \end{equation*}
+		      的充要条件是
+		      \begin{enumerate*}[label=(\roman*)]
+			      \item 当\( 2 \nmid n \)时， \( a \mid b^2 + 1 \)；
+			      \item 当\( 2 \mid n  \)时， \( a \mid b^2 - 1 \)。
+		      \end{enumerate*}
+		\item 设 \( a, b, c, d \)是整数， \( c > d > 0, \quad ad - bc = \pm 1 \)。再设实数 \( \eta \geqslant 1 \)。若
+		      \( \xi = (a\eta + b) / (c\eta + d) \)，则 \( \xi = \langle a_0, \cdots, a_n, \eta \rangle \)，以及 \( b/d
+		      = \langle a_0, \cdots, a_{n-1} \rangle\)，这里 \( \langle a_0, \cdots, a_n \rangle \)是 \( a/c \)的有限简连分数表示式。
+		  \item 设 \( r^{(n)} = \langle 1, 2, \cdots, n+1 \rangle \)，它的各个渐近分数为 \( h_j/k_j \)，
+		      \( j = 0, 1, \cdots, n \)。证明：当\( n \geqslant 3 \)时，
+			  \begin{equation*}
+				  h_n = nh_{n-1} + nh_{n-2} + (n-1)h_{n-3} + \cdots + 3h_1 + 2h_0 + 2h_{-1}。
+			  \end{equation*}
+
+	\end{enumerate}
+\end{exercise}
